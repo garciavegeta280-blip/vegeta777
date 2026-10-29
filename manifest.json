@@ -1,0 +1,14 @@
+{
+  "name": "VEGETA 777 - Generador de Sensibilidad",
+  "short_name": "VEGETA 777",
+  "description": "Recomendaciones de sensibilidad Free Fire con escala de 0 a 200.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#050914",
+  "theme_color": "#071225",
+  "icons": [
+    {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}

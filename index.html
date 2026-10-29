@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071225">
+<meta name="description" content="VEGETA 777: generador de recomendaciones de sensibilidad para Free Fire.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>VEGETA 777 — Generador de sensibilidad</title>
+<style>
+:root{--bg:#050914;--panel:#0a1428;--panel2:#0c1b34;--blue:#08a9ff;--red:#ff244e;--text:#f2f7ff;--muted:#9bb0ca;--line:#183d67}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 12% 0%,#102b53 0,transparent 34%),radial-gradient(circle at 95% 10%,#4b1028 0,transparent 28%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+header{padding:25px 16px 18px;text-align:center;border-bottom:1px solid #153b66;background:linear-gradient(110deg,#06172b,#080b18 50%,#240a18)}
+.logo{font-weight:1000;letter-spacing:-1px;font-size:clamp(2rem,8vw,3.6rem);line-height:1;text-shadow:3px 3px 0 #074e8a}.logo span{color:var(--red);text-shadow:3px 3px 0 #5b0922}.sub{color:#c8d8ef;font-weight:800;letter-spacing:2px;font-size:.82rem;margin-top:10px}.tag{display:inline-block;margin-top:12px;padding:5px 10px;border:1px solid #0d8ee7;border-radius:999px;color:#83d4ff;font-size:.72rem}
+main{width:min(920px,100%);margin:auto;padding:16px 13px 30px}.panel{background:linear-gradient(145deg,rgba(11,28,53,.97),rgba(5,11,25,.98));border:1px solid var(--line);border-radius:17px;padding:16px;margin-bottom:14px;box-shadow:0 12px 30px #0005}.section-title{font-size:1rem;font-weight:900;letter-spacing:.4px;margin:0 0 14px;display:flex;gap:9px;align-items:center}.section-title:before{content:"";width:4px;height:23px;border-radius:8px;background:linear-gradient(var(--blue),var(--red))}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field label{display:block;font-size:.8rem;color:#b7cbe5;font-weight:750;margin-bottom:7px}.field input,.field select{width:100%;min-height:45px;border:1px solid #25527d;border-radius:10px;background:#061022;color:white;padding:10px 11px;font:inherit;outline:none}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 2px #08a9ff22}.hint{font-size:.73rem;color:var(--muted);margin-top:6px}
+.range-head{display:flex;justify-content:space-between;align-items:center;gap:8px}.range-head output{font-weight:900;color:#fff;background:#102b4c;border:1px solid #28609a;border-radius:8px;padding:4px 9px;min-width:50px;text-align:center}.field input[type=range]{padding:0;min-height:24px;accent-color:var(--red);border:0;background:transparent}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.btn{border:0;border-radius:12px;padding:13px 12px;font-size:.92rem;font-weight:900;cursor:pointer;color:white;min-height:48px}.primary{background:linear-gradient(100deg,#087cff,#06b5ff);box-shadow:0 5px 18px #087cff35}.secondary{background:linear-gradient(100deg,#ff1748,#ce123b);box-shadow:0 5px 18px #ff174835}.ghost{background:#0b1b32;border:1px solid #22527f}.btn:active{transform:scale(.99)}
+.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.result{background:linear-gradient(120deg,#0b1e38,#11142a);border:1px solid #1d4b78;border-radius:12px;padding:12px}.result .name{font-size:.82rem;color:#b7cbe5}.result .val{font-size:1.75rem;font-weight:1000;letter-spacing:-.5px;margin-top:3px}.result .bar{height:5px;background:#1a3658;border-radius:8px;overflow:hidden;margin-top:8px}.result .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--red))}
+.summary{white-space:pre-wrap;background:#030916;border:1px dashed #25527d;border-radius:12px;padding:13px;font: .85rem/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;color:#dceeff;overflow-wrap:anywhere}.notice{font-size:.78rem;color:#a9bfd9;line-height:1.5}.status{min-height:1.3em;font-size:.82rem;color:#76d5ff;margin-top:8px}.footer{text-align:center;color:#7088a6;font-size:.75rem;padding:8px 14px 20px}.pill{color:#ff8aa4;font-weight:800}
+@media(min-width:650px){.fields{grid-template-columns:repeat(3,minmax(0,1fr))}.results{grid-template-columns:repeat(4,minmax(0,1fr))}.panel{padding:20px}main{padding-top:22px}}
+@media(max-width:370px){.fields,.actions{grid-template-columns:1fr}.logo{font-size:2.25rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">VEGETA <span>777</span> 💯</div>
+  <div class="sub">GENERADOR DE SENSIBILIDAD</div>
+  <div class="tag">FREE FIRE · ESCALA 0–200</div>
+</header>
+<main>
+  <section class="panel">
+    <h2 class="section-title">PERSONALIZA TU DISPOSITIVO</h2>
+    <div class="fields">
+      <div class="field"><label for="device">Marca y modelo</label><select id="device">
+        <option>Tecno Spark 40 Pro</option><option>Tecno Spark 30 Pro</option><option>Tecno Pova 6</option><option>Tecno Pova 6 Pro</option><option>Infinix Hot 40</option><option>Infinix Hot 50 Pro</option><option>Infinix Note 40</option><option>Infinix GT 20 Pro</option><option>Samsung Galaxy A15</option><option>Samsung Galaxy A25</option><option>Xiaomi Redmi Note 13</option><option>POCO X6 Pro</option><option>Motorola Moto G</option><option>Otro Android</option>
+      </select></div>
+      <div class="field"><label for="dpi">DPI del celular</label><input id="dpi" type="number" min="240" max="1000" value="420" inputmode="numeric"><div class="hint">Usa el valor que ya tengas configurado.</div></div>
+      <div class="field"><label for="fire">Tamaño del botón de disparo</label><select id="fire"><option value="pequeno">Pequeño</option><option value="medio" selected>Mediano</option><option value="grande">Grande</option></select></div>
+      <div class="field"><label for="quality">Rendimiento del celular</label><select id="quality"><option value="bajo">Bajo / básico</option><option value="medio" selected>Medio</option><option value="alto">Alto / gaming</option></select></div>
+      <div class="field"><label for="style">Estilo de juego</label><select id="style"><option value="equilibrado">Equilibrado</option><option value="rapido" selected>Rápido / levantar mira</option><option value="preciso">Precisión / control</option></select></div>
+      <div class="field"><label for="custom">Ajuste extra</label><div class="range-head"><span class="hint">Suave</span><output id="customOut">0</output><span class="hint">Agresivo</span></div><input id="custom" type="range" min="-20" max="20" value="0"></div>
+    </div>
+    <div class="actions"><button class="btn primary" id="generate">⚡ GENERAR SENSIBILIDAD</button><button class="btn secondary" id="copy">▣ COPIAR CONFIGURACIÓN</button></div>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+  </section>
+  <section class="panel">
+    <h2 class="section-title">TU CONFIGURACIÓN RECOMENDADA</h2>
+    <div class="results" id="results"></div>
+    <div class="actions"><button class="btn ghost" id="share">↗ COMPARTIR</button><button class="btn ghost" id="install" hidden>＋ INSTALAR APP</button></div>
+  </section>
+  <section class="panel">
+    <h2 class="section-title">CONFIGURACIÓN PARA COPIAR</h2>
+    <div class="summary" id="summary"></div>
+  </section>
+  <section class="panel notice"><b class="pill">Importante:</b> esta herramienta ofrece valores iniciales sugeridos, no una configuración oficial ni una garantía de dar todo rojo. Prueba en el campo de entrenamiento y ajusta poco a poco según tu comodidad. No modifica Free Fire ni cambia automáticamente los ajustes del juego.</section>
+</main>
+<div class="footer">VEGETA 777 💯 · Herramienta independiente para recomendaciones de sensibilidad</div>
+<script>
+const $=id=>document.getElementById(id);
+let current={};
+const clamp=n=>Math.max(0,Math.min(200,Math.round(n)));
+function makeConfig(){
+  const device=$('device').value, dpi=Math.max(240,Math.min(1000,Number($('dpi').value)||420));
+  const fire=$('fire').value, quality=$('quality').value, style=$('style').value, extra=Number($('custom').value);
+  const deviceBonus=device.includes('Pro')||device.includes('GT')?4:device==='Otro Android'?0:2;
+  const dpiAdjust=Math.max(-10,Math.min(10,Math.round((dpi-420)/35)));
+  const fireAdjust={pequeno:-5,medio:0,grande:5}[fire];
+  const qualityAdjust={bajo:-8,medio:0,alto:5}[quality];
+  const styleAdjust={equilibrado:0,rapido:9,preciso:-9}[style];
+  const base= {general:155,punto:148,mira2x:138,mira4x:122,awm:92,camara:110};
+  const adjust=dpiAdjust+fireAdjust+qualityAdjust+styleAdjust+deviceBonus+extra;
+  current={device,dpi,fire,quality,style,
+    general:clamp(base.general+adjust),
+    punto:clamp(base.punto+adjust),
+    mira2x:clamp(base.mira2x+Math.round(adjust*.85)),
+    mira4x:clamp(base.mira4x+Math.round(adjust*.65)),
+    awm:clamp(base.awm+Math.round(adjust*.5)),
+    camara:clamp(base.camara+Math.round(adjust*.55))};
+  render();
+}
+const names={general:'General',punto:'Mira de punto rojo',mira2x:'Mira 2x',mira4x:'Mira 4x',awm:'Mira AWM',camara:'Cámara'};
+function render(){
+  $('results').innerHTML=Object.keys(names).map(k=>`<div class="result"><div class="name">${names[k]}</div><div class="val">${current[k]}</div><div class="bar"><i style="width:${current[k]/2}%"></i></div></div>`).join('');
+  $('summary').textContent=`VEGETA 777 💯 — SENSIBILIDAD FREE FIRE\nDispositivo: ${current.device}\nDPI indicado: ${current.dpi}\nBotón de disparo: ${({pequeno:'Pequeño',medio:'Mediano',grande:'Grande'})[current.fire]}\nRendimiento: ${({bajo:'Bajo / básico',medio:'Medio',alto:'Alto / gaming'})[current.quality]}\nEstilo: ${({equilibrado:'Equilibrado',rapido:'Rápido / levantar mira',preciso:'Precisión / control'})[current.style]}\n\nGeneral: ${current.general}\nMira de punto rojo: ${current.punto}\nMira 2x: ${current.mira2x}\nMira 4x: ${current.mira4x}\nMira AWM: ${current.awm}\nCámara: ${current.camara}\n\nRango de valores: 0–200\nNota: valores recomendados para probar; ajusta según tu comodidad.`;
+}
+$('custom').addEventListener('input',()=> $('customOut').value=$('custom').value);
+$('generate').addEventListener('click',()=>{makeConfig();$('status').textContent='¡Configuración generada! Pruébala en entrenamiento.'});
+['device','dpi','fire','quality','style','custom'].forEach(id=>$(id).addEventListener('change',()=>{makeConfig();$('status').textContent='Configuración actualizada.'}));
+$('copy').addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText($('summary').textContent);$('status').textContent='¡Configuración copiada! Ya puedes pegarla.'}
+ catch(e){const t=document.createElement('textarea');t.value=$('summary').textContent;document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();$('status').textContent=ok?'¡Configuración copiada!':'No se pudo copiar automáticamente; mantén pulsado el texto para copiarlo.'}
+});
+$('share').addEventListener('click',async()=>{
+ const text=$('summary').textContent;
+ if(navigator.share){try{await navigator.share({title:'VEGETA 777 — Sensibilidad',text})}catch(e){}}
+ else {try{await navigator.clipboard.writeText(text);$('status').textContent='Configuración copiada para compartir.'}catch(e){$('status').textContent='Pulsa “Copiar configuración” para compartir tus valores.'}}
+});
+let installPrompt;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('install').hidden=false});
+$('install').addEventListener('click',async()=>{if(!installPrompt){$('status').textContent='En Chrome: menú ⋮ → Añadir a pantalla de inicio.';return}installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('install').hidden=true});
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+makeConfig();
+</script>
+</body>
+</html>
